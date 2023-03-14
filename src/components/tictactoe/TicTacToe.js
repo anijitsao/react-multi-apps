@@ -1,13 +1,13 @@
 import { useState, useEffect } from "react";
 import Box from "./Box";
-import useEthConnector from "./EthConnector";
+// import useEthConnector from "./EthConnector";
 
-import Constants from "./Constants";
+import Constants from "../Constants";
 
 const TicTacToe = (props) => {
   const [box, setBox] = useState();
-  const [boxEth, getBox, saveBox, resultEth, getResult, saveResult] =
-    useEthConnector();
+  //   const [boxEth, getBox, saveBox, resultEth, getResult, saveResult] =
+  //     useEthConnector();
   const [userTurn, setUserTurn] = useState(true);
   const [isBoxFilled, setIsBoxFilled] = useState(false);
   const [result, setResult] = useState("");
@@ -15,8 +15,8 @@ const TicTacToe = (props) => {
 
   useEffect(() => {
     if (!isBoxLoaded) {
-      getBox();
-      getResult();
+      //   getBox();
+      //   getResult();
       setBoxLoaded(true);
     }
     // copy the Ethereum box into our box variable
@@ -25,10 +25,10 @@ const TicTacToe = (props) => {
     }
 
     // copy the Game result to result variable
-    if (resultEth && !result) {
-      console.log("Game result as received", resultEth);
-      setResult(resultEth);
-    }
+    // if (resultEth && !result) {
+    //   console.log("Game result as received", resultEth);
+    //   setResult(resultEth);
+    // }
 
     if (Array.isArray(box) && !userTurn) {
       checkForMatch();

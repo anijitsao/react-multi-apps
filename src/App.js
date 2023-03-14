@@ -7,6 +7,7 @@ import Title from "./components/layout/Title";
 const Calculator = lazy(() => import("./components/calculator/Calculator"));
 const Clock = lazy(() => import("./components/clock/Clock"));
 const ToDoList = lazy(() => import("./components/todolist/ToDoList"));
+const TicTacToe = lazy(() => import("./components/tictactoe/TicTacToe"));
 
 // css
 import "./css/style.css";
@@ -22,6 +23,7 @@ const App = () => {
             <Route path="/" element={<Calculator />} />
             <Route path="clock" element={<Clock />} />
             <Route path="todolist" element={<ToDoList />} />
+            <Route path="tictactoe" element={<TicTacToe />} />
           </Routes>
         </Suspense>
       </div>
