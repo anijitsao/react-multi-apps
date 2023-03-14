@@ -1,0 +1,85 @@
+:root {
+  --font: "Roboto", sans-serif;
+  --font-size-normal: 16px;
+  --font-size-small: 11px;
+  --bold-font: 700;
+  --thin-font: 100;
+  --normal-font: 400;
+  --border-radius: 5px;
+  --box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+  --white: #fff;
+  --blue: #819bff;
+  --green: #8ee676;
+  --slow-transition: all ease-in-out 300ms;
+}
+
+/* Tic Tac Toe box related */
+.box-container {
+  background-color: var(--white);
+  padding: 1em;
+
+  display: grid;
+  align-items: center;
+  justify-content: center;
+}
+
+.row-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 7px 1px;
+  text-align: center;
+  width: 30vw;
+}
+
+/* all the boxes of the tic tac toe */
+.box {
+  color: var(--white);
+  padding: 1.17em;
+  font-weight: 700;
+  font-size: 1.5rem;
+  height: 6rem;
+}
+
+.box:hover {
+  opacity: 0.8;
+  transition: var(--slow-transition);
+  cursor: pointer;
+}
+
+.even-box {
+  background-color: var(--blue);
+}
+
+.odd-box {
+  background-color: var(--green);
+}
+
+.result--div {
+  font-size: 1.5rem;
+  font-weight: 100;
+}
+
+/* media queries to make it responsive */
+@media only screen and (max-width: 600px) {
+  /* html {
+        font-size: var(--font-size-small);
+    }
+
+    .container {
+        width: 90vw;
+    } */
+
+  .row-container {
+    width: 39vw;
+  }
+
+  .box {
+    padding: 2.1em;
+    width: 3rem;
+  }
+
+  .box-container {
+    padding-left: 0;
+    padding-right: 5rem;
+  }
+}
