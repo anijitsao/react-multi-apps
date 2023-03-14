@@ -2,15 +2,22 @@ import { useState, useEffect } from "react";
 import Box from "./Box";
 // import useEthConnector from "./EthConnector";
 
-import Constants from "../Constants";
+import { Constants } from "../Constants";
+console.log("constants", Constants);
+
+// css
+import "../../css/tictactoe.css";
 
 const TicTacToe = (props) => {
-  const [box, setBox] = useState();
+  // initialize all the constants
+  const allConstants = Constants();
+
+  const [box, setBox] = useState(allConstants.BOX_INITIAL);
   //   const [boxEth, getBox, saveBox, resultEth, getResult, saveResult] =
   //     useEthConnector();
   const [userTurn, setUserTurn] = useState(true);
   const [isBoxFilled, setIsBoxFilled] = useState(false);
-  const [result, setResult] = useState("");
+  const [result, setResult] = useState("TBD");
   const [isBoxLoaded, setBoxLoaded] = useState(false);
 
   useEffect(() => {
@@ -20,9 +27,9 @@ const TicTacToe = (props) => {
       setBoxLoaded(true);
     }
     // copy the Ethereum box into our box variable
-    if (boxEth && !box) {
-      setBox(boxEth);
-    }
+    // if (boxEth && !box) {
+    //   setBox(boxEth);
+    // }
 
     // copy the Game result to result variable
     // if (resultEth && !result) {
@@ -36,8 +43,6 @@ const TicTacToe = (props) => {
     }
   });
 
-  // initialize all the constants
-  const allConstants = Constants();
   const GRID_LENGTH = allConstants.GRID_LENGTH;
 
   // handle the onClick event
@@ -76,7 +81,7 @@ const TicTacToe = (props) => {
     console.log("Code for user move");
     const boxNew = JSON.parse(JSON.stringify(box));
     boxNew[rowIndex][colIndex] = allConstants.USER_MOVE;
-    saveBox(rowIndex, colIndex, allConstants.USER_MOVE);
+    // saveBox(rowIndex, colIndex, allConstants.USER_MOVE);
     setBox(boxNew);
     setUserTurn(false);
   };
@@ -154,7 +159,7 @@ const TicTacToe = (props) => {
       if (checkIfEmptyCell(randomRow, randomCol)) {
         const boxNew = JSON.parse(JSON.stringify(box));
         boxNew[randomRow][randomCol] = allConstants.COMPUTER_MOVE;
-        saveBox(randomRow, randomCol, allConstants.COMPUTER_MOVE);
+        // saveBox(randomRow, randomCol, allConstants.COMPUTER_MOVE);
         setBox(boxNew);
         setUserTurn(true);
         return;
@@ -174,7 +179,7 @@ const TicTacToe = (props) => {
 
     // if result not defined set it
     result == "TBD" ? setResult(content) : result;
-    saveResult(content);
+    // saveResult(content);
   };
 
   // render the box contents

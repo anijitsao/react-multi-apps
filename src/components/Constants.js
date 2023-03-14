@@ -11,5 +11,11 @@ export function Constants() {
     COMPUTER_MOVE: 2,
     EMPTY_CELL: 0,
     GRID_LENGTH: 3,
+
+    BOX_INITIAL: [
+      [0, 0, 0],
+      [0, 0, 0],
+      [0, 0, 0],
+    ],
   };
 }
