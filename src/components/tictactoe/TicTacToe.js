@@ -21,20 +21,8 @@ const TicTacToe = (props) => {
   const [isBoxLoaded, setBoxLoaded] = useState(false);
 
   useEffect(() => {
-    if (!isBoxLoaded) {
-      //   getBox();
-      //   getResult();
-      setBoxLoaded(true);
-    }
-    // copy the Ethereum box into our box variable
-    // if (boxEth && !box) {
-    //   setBox(boxEth);
-    // }
-
-    // copy the Game result to result variable
-    // if (resultEth && !result) {
-    //   console.log("Game result as received", resultEth);
-    //   setResult(resultEth);
+    // if (!isBoxLoaded) {
+    //   setBoxLoaded(true);
     // }
 
     if (Array.isArray(box) && !userTurn) {
@@ -70,7 +58,7 @@ const TicTacToe = (props) => {
 
   // check if it is an empty slot
   const checkIfEmptyCell = (rowIndex, colIndex) => {
-    if (box[rowIndex][colIndex] == 0) {
+    if (box[rowIndex][colIndex] == allConstants.EMPTY_CELL) {
       return true;
     }
     return false;
@@ -81,7 +69,6 @@ const TicTacToe = (props) => {
     console.log("Code for user move");
     const boxNew = JSON.parse(JSON.stringify(box));
     boxNew[rowIndex][colIndex] = allConstants.USER_MOVE;
-    // saveBox(rowIndex, colIndex, allConstants.USER_MOVE);
     setBox(boxNew);
     setUserTurn(false);
   };
@@ -159,7 +146,6 @@ const TicTacToe = (props) => {
       if (checkIfEmptyCell(randomRow, randomCol)) {
         const boxNew = JSON.parse(JSON.stringify(box));
         boxNew[randomRow][randomCol] = allConstants.COMPUTER_MOVE;
-        // saveBox(randomRow, randomCol, allConstants.COMPUTER_MOVE);
         setBox(boxNew);
         setUserTurn(true);
         return;
@@ -179,7 +165,6 @@ const TicTacToe = (props) => {
 
     // if result not defined set it
     result == "TBD" ? setResult(content) : result;
-    // saveResult(content);
   };
 
   // render the box contents
