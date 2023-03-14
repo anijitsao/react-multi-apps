@@ -3,7 +3,6 @@ import Box from "./Box";
 // import useEthConnector from "./EthConnector";
 
 import { Constants } from "../Constants";
-console.log("constants", Constants);
 
 // css
 import "../../css/tictactoe.css";
@@ -13,12 +12,10 @@ const TicTacToe = (props) => {
   const allConstants = Constants();
 
   const [box, setBox] = useState(allConstants.BOX_INITIAL);
-  //   const [boxEth, getBox, saveBox, resultEth, getResult, saveResult] =
-  //     useEthConnector();
   const [userTurn, setUserTurn] = useState(true);
   const [isBoxFilled, setIsBoxFilled] = useState(false);
   const [result, setResult] = useState("TBD");
-  const [isBoxLoaded, setBoxLoaded] = useState(false);
+  //   const [isBoxLoaded, setBoxLoaded] = useState(false);
 
   useEffect(() => {
     // if (!isBoxLoaded) {

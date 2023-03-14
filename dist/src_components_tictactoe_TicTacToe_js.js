@@ -11,9 +11,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-
+/* harmony import */ var _Constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../Constants */ "./src/components/Constants.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 // Box component
+
 
 const Box = props => {
   // extracting necessary fields from the props
@@ -25,11 +26,14 @@ const Box = props => {
   } = props;
   const boxIndex = rowIndex + colIndex + 1;
   const boxStyle = boxIndex % 2 === 0 ? "even-box box" : "odd-box box";
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+
+  // initialize all the constants
+  const allConstants = (0,_Constants__WEBPACK_IMPORTED_MODULE_0__.Constants)();
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
     id: `${rowIndex}-${colIndex}`,
     className: boxStyle,
     onClick: handleOnClick,
-    children: value == 1 ? "X" : value == 2 ? "O" : ""
+    children: value == allConstants.USER_MOVE ? "X" : value == allConstants.COMPUTER_MOVE ? "O" : ""
   });
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Box);
@@ -57,7 +61,6 @@ __webpack_require__.r(__webpack_exports__);
 // import useEthConnector from "./EthConnector";
 
 
-console.log("constants", _Constants__WEBPACK_IMPORTED_MODULE_2__.Constants);
 
 // css
 
@@ -66,27 +69,14 @@ const TicTacToe = props => {
   // initialize all the constants
   const allConstants = (0,_Constants__WEBPACK_IMPORTED_MODULE_2__.Constants)();
   const [box, setBox] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(allConstants.BOX_INITIAL);
-  //   const [boxEth, getBox, saveBox, resultEth, getResult, saveResult] =
-  //     useEthConnector();
   const [userTurn, setUserTurn] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(true);
   const [isBoxFilled, setIsBoxFilled] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
   const [result, setResult] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("TBD");
-  const [isBoxLoaded, setBoxLoaded] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
-  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
-    if (!isBoxLoaded) {
-      //   getBox();
-      //   getResult();
-      setBoxLoaded(true);
-    }
-    // copy the Ethereum box into our box variable
-    // if (boxEth && !box) {
-    //   setBox(boxEth);
-    // }
+  //   const [isBoxLoaded, setBoxLoaded] = useState(false);
 
-    // copy the Game result to result variable
-    // if (resultEth && !result) {
-    //   console.log("Game result as received", resultEth);
-    //   setResult(resultEth);
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
+    // if (!isBoxLoaded) {
+    //   setBoxLoaded(true);
     // }
 
     if (Array.isArray(box) && !userTurn) {
@@ -123,7 +113,7 @@ const TicTacToe = props => {
 
   // check if it is an empty slot
   const checkIfEmptyCell = (rowIndex, colIndex) => {
-    if (box[rowIndex][colIndex] == 0) {
+    if (box[rowIndex][colIndex] == allConstants.EMPTY_CELL) {
       return true;
     }
     return false;
@@ -134,7 +124,6 @@ const TicTacToe = props => {
     console.log("Code for user move");
     const boxNew = JSON.parse(JSON.stringify(box));
     boxNew[rowIndex][colIndex] = allConstants.USER_MOVE;
-    // saveBox(rowIndex, colIndex, allConstants.USER_MOVE);
     setBox(boxNew);
     setUserTurn(false);
   };
@@ -205,7 +194,6 @@ const TicTacToe = props => {
       if (checkIfEmptyCell(randomRow, randomCol)) {
         const boxNew = JSON.parse(JSON.stringify(box));
         boxNew[randomRow][randomCol] = allConstants.COMPUTER_MOVE;
-        // saveBox(randomRow, randomCol, allConstants.COMPUTER_MOVE);
         setBox(boxNew);
         setUserTurn(true);
         return;
@@ -221,7 +209,6 @@ const TicTacToe = props => {
 
     // if result not defined set it
     result == "TBD" ? setResult(content) : result;
-    // saveResult(content);
   };
 
   // render the box contents
