@@ -184,7 +184,7 @@ const TicTacToe = props => {
     children: result && result != "TBD" ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
       className: "result--div",
       children: `${result}!!!`
-    }) : Array.isArray(box) ? box.map((row, rowIndex) => {
+    }) : Array.isArray(box) && box.map((row, rowIndex) => {
       return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
         className: "row-container",
         children: row.map((box, colIndex) => {
@@ -196,7 +196,7 @@ const TicTacToe = props => {
           }, colIndex);
         })
       }, rowIndex);
-    }) : "box is loading..."
+    })
   });
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (TicTacToe);
