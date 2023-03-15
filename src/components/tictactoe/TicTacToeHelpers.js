@@ -13,10 +13,7 @@ const generateIndices = (id) => {
 
 // check if it is an empty slot
 const checkIfEmptyCell = (rowIndex, colIndex, box) => {
-  if (box[rowIndex][colIndex] == allConstants.EMPTY_CELL) {
-    return true;
-  }
-  return false;
+  return box[rowIndex][colIndex] == allConstants.EMPTY_CELL;
 };
 
 const findDiagonals = (box) => {
