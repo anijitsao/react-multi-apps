@@ -27,6 +27,8 @@
 
   --light-shadow: rgba(0, 0, 0, 0.4);
   --lighter-shadow: rgba(0, 0, 0, 0.2);
+
+  --slow-transition: all ease-in-out 300ms;
 }
 
 html {
