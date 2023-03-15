@@ -1,6 +1,11 @@
 import { useState, useEffect } from "react";
 import Box from "./Box";
 import { Constants } from "../Constants";
+import {
+  generateIndices,
+  checkIfEmptyCell,
+  findDiagonals,
+} from "./TicTacToeHelpers";
 
 // css
 import "../../css/tictactoe.css";
@@ -29,29 +34,13 @@ const TicTacToe = (props) => {
     console.log("code comes here", id);
     if (!isBoxFilled) {
       const [rowIndex, colIndex] = generateIndices(id);
-      let isEmpty = checkIfEmptyCell(rowIndex, colIndex);
+      let isEmpty = checkIfEmptyCell(rowIndex, colIndex, box);
       if (isEmpty === true) {
         captureUserMove(rowIndex, colIndex);
       }
     } else {
       showResult();
     }
-  };
-
-  // generate row and col index
-  const generateIndices = (id) => {
-    let [rowIndex, colIndex] = id.split("-");
-    rowIndex = parseInt(rowIndex);
-    colIndex = parseInt(colIndex);
-    return [rowIndex, colIndex];
-  };
-
-  // check if it is an empty slot
-  const checkIfEmptyCell = (rowIndex, colIndex) => {
-    if (box[rowIndex][colIndex] == allConstants.EMPTY_CELL) {
-      return true;
-    }
-    return false;
   };
 
   // capture user's move by set it to 1
@@ -67,7 +56,7 @@ const TicTacToe = (props) => {
   const checkIfBoxFilled = () => {
     for (let row = 0; row < allConstants.GRID_LENGTH; row++) {
       for (let col = 0; col < allConstants.GRID_LENGTH; col++) {
-        if (checkIfEmptyCell(row, col)) {
+        if (checkIfEmptyCell(row, col, box)) {
           setIsBoxFilled(true);
           return true;
         }
@@ -92,20 +81,7 @@ const TicTacToe = (props) => {
     }
 
     // for a diagonal match
-    let principalDiagonal = "";
-    let otherDiagonal = "";
-
-    for (let i = 0; i < GRID_LENGTH; i++) {
-      for (let j = 0; j < GRID_LENGTH; j++) {
-        if (i == j) {
-          principalDiagonal = `${principalDiagonal}${box[i][j]}`;
-        }
-
-        if (i + j + 1 == GRID_LENGTH) {
-          otherDiagonal = `${otherDiagonal}${box[i][j]}`;
-        }
-      }
-    }
+    let [principalDiagonal, otherDiagonal] = findDiagonals(box);
 
     checkWinner(principalDiagonal);
     checkWinner(otherDiagonal);
@@ -133,7 +109,7 @@ const TicTacToe = (props) => {
       let randomRow = Math.floor(Math.random() * GRID_LENGTH) + 0;
       console.log("random cell generated", randomCol, " ", randomRow);
 
-      if (checkIfEmptyCell(randomRow, randomCol)) {
+      if (checkIfEmptyCell(randomRow, randomCol, box)) {
         const boxNew = JSON.parse(JSON.stringify(box));
         boxNew[randomRow][randomCol] = allConstants.COMPUTER_MOVE;
         setBox(boxNew);
@@ -162,7 +138,8 @@ const TicTacToe = (props) => {
     <div className="box-container">
       {result && result != "TBD" ? (
         <div className="result--div">{`${result}!!!`}</div>
-      ) : Array.isArray(box) ? (
+      ) : (
+        Array.isArray(box) &&
         box.map((row, rowIndex) => {
           return (
             <div className="row-container" key={rowIndex}>
@@ -180,8 +157,6 @@ const TicTacToe = (props) => {
             </div>
           );
         })
-      ) : (
-        "box is loading..."
       )}
     </div>
   );

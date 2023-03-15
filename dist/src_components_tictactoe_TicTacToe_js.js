@@ -54,8 +54,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _Box__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Box */ "./src/components/tictactoe/Box.js");
 /* harmony import */ var _Constants__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Constants */ "./src/components/Constants.js");
-/* harmony import */ var _css_tictactoe_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../css/tictactoe.css */ "./src/css/tictactoe.css");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _TicTacToeHelpers__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./TicTacToeHelpers */ "./src/components/tictactoe/TicTacToeHelpers.js");
+/* harmony import */ var _css_tictactoe_css__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../css/tictactoe.css */ "./src/css/tictactoe.css");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
 
 
 
@@ -85,30 +87,14 @@ const TicTacToe = props => {
     } = event.target;
     console.log("code comes here", id);
     if (!isBoxFilled) {
-      const [rowIndex, colIndex] = generateIndices(id);
-      let isEmpty = checkIfEmptyCell(rowIndex, colIndex);
+      const [rowIndex, colIndex] = (0,_TicTacToeHelpers__WEBPACK_IMPORTED_MODULE_3__.generateIndices)(id);
+      let isEmpty = (0,_TicTacToeHelpers__WEBPACK_IMPORTED_MODULE_3__.checkIfEmptyCell)(rowIndex, colIndex, box);
       if (isEmpty === true) {
         captureUserMove(rowIndex, colIndex);
       }
     } else {
       showResult();
     }
-  };
-
-  // generate row and col index
-  const generateIndices = id => {
-    let [rowIndex, colIndex] = id.split("-");
-    rowIndex = parseInt(rowIndex);
-    colIndex = parseInt(colIndex);
-    return [rowIndex, colIndex];
-  };
-
-  // check if it is an empty slot
-  const checkIfEmptyCell = (rowIndex, colIndex) => {
-    if (box[rowIndex][colIndex] == allConstants.EMPTY_CELL) {
-      return true;
-    }
-    return false;
   };
 
   // capture user's move by set it to 1
@@ -124,7 +110,7 @@ const TicTacToe = props => {
   const checkIfBoxFilled = () => {
     for (let row = 0; row < allConstants.GRID_LENGTH; row++) {
       for (let col = 0; col < allConstants.GRID_LENGTH; col++) {
-        if (checkIfEmptyCell(row, col)) {
+        if ((0,_TicTacToeHelpers__WEBPACK_IMPORTED_MODULE_3__.checkIfEmptyCell)(row, col, box)) {
           setIsBoxFilled(true);
           return true;
         }
@@ -149,18 +135,7 @@ const TicTacToe = props => {
     }
 
     // for a diagonal match
-    let principalDiagonal = "";
-    let otherDiagonal = "";
-    for (let i = 0; i < GRID_LENGTH; i++) {
-      for (let j = 0; j < GRID_LENGTH; j++) {
-        if (i == j) {
-          principalDiagonal = `${principalDiagonal}${box[i][j]}`;
-        }
-        if (i + j + 1 == GRID_LENGTH) {
-          otherDiagonal = `${otherDiagonal}${box[i][j]}`;
-        }
-      }
-    }
+    let [principalDiagonal, otherDiagonal] = (0,_TicTacToeHelpers__WEBPACK_IMPORTED_MODULE_3__.findDiagonals)(box);
     checkWinner(principalDiagonal);
     checkWinner(otherDiagonal);
   };
@@ -183,7 +158,7 @@ const TicTacToe = props => {
       let randomCol = Math.floor(Math.random() * GRID_LENGTH) + 0;
       let randomRow = Math.floor(Math.random() * GRID_LENGTH) + 0;
       console.log("random cell generated", randomCol, " ", randomRow);
-      if (checkIfEmptyCell(randomRow, randomCol)) {
+      if ((0,_TicTacToeHelpers__WEBPACK_IMPORTED_MODULE_3__.checkIfEmptyCell)(randomRow, randomCol, box)) {
         const boxNew = JSON.parse(JSON.stringify(box));
         boxNew[randomRow][randomCol] = allConstants.COMPUTER_MOVE;
         setBox(boxNew);
@@ -204,16 +179,16 @@ const TicTacToe = props => {
   };
 
   // render the box contents
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
     className: "box-container",
-    children: result && result != "TBD" ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+    children: result && result != "TBD" ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
       className: "result--div",
       children: `${result}!!!`
     }) : Array.isArray(box) ? box.map((row, rowIndex) => {
-      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
         className: "row-container",
         children: row.map((box, colIndex) => {
-          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_Box__WEBPACK_IMPORTED_MODULE_1__["default"], {
+          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_Box__WEBPACK_IMPORTED_MODULE_1__["default"], {
             value: box,
             rowIndex: rowIndex,
             colIndex: colIndex,
@@ -225,6 +200,59 @@ const TicTacToe = props => {
   });
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (TicTacToe);
+
+/***/ }),
+
+/***/ "./src/components/tictactoe/TicTacToeHelpers.js":
+/*!******************************************************!*\
+  !*** ./src/components/tictactoe/TicTacToeHelpers.js ***!
+  \******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "checkIfEmptyCell": () => (/* binding */ checkIfEmptyCell),
+/* harmony export */   "findDiagonals": () => (/* binding */ findDiagonals),
+/* harmony export */   "generateIndices": () => (/* binding */ generateIndices)
+/* harmony export */ });
+/* harmony import */ var _Constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../Constants */ "./src/components/Constants.js");
+
+
+// initialize all the constants
+const allConstants = (0,_Constants__WEBPACK_IMPORTED_MODULE_0__.Constants)();
+
+// generate row and col index
+const generateIndices = id => {
+  let [rowIndex, colIndex] = id.split("-");
+  rowIndex = parseInt(rowIndex);
+  colIndex = parseInt(colIndex);
+  return [rowIndex, colIndex];
+};
+
+// check if it is an empty slot
+const checkIfEmptyCell = (rowIndex, colIndex, box) => {
+  if (box[rowIndex][colIndex] == allConstants.EMPTY_CELL) {
+    return true;
+  }
+  return false;
+};
+const findDiagonals = box => {
+  let principalDiagonal = "";
+  let otherDiagonal = "";
+  const GRID_LENGTH = allConstants.GRID_LENGTH;
+  for (let i = 0; i < GRID_LENGTH; i++) {
+    for (let j = 0; j < GRID_LENGTH; j++) {
+      if (i == j) {
+        principalDiagonal = `${principalDiagonal}${box[i][j]}`;
+      }
+      if (i + j + 1 == GRID_LENGTH) {
+        otherDiagonal = `${otherDiagonal}${box[i][j]}`;
+      }
+    }
+  }
+  return [principalDiagonal, otherDiagonal];
+};
+
 
 /***/ }),
 
