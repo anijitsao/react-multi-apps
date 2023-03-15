@@ -1,7 +1,5 @@
 import { useState, useEffect } from "react";
 import Box from "./Box";
-// import useEthConnector from "./EthConnector";
-
 import { Constants } from "../Constants";
 
 // css
@@ -15,13 +13,8 @@ const TicTacToe = (props) => {
   const [userTurn, setUserTurn] = useState(true);
   const [isBoxFilled, setIsBoxFilled] = useState(false);
   const [result, setResult] = useState("TBD");
-  //   const [isBoxLoaded, setBoxLoaded] = useState(false);
 
   useEffect(() => {
-    // if (!isBoxLoaded) {
-    //   setBoxLoaded(true);
-    // }
-
     if (Array.isArray(box) && !userTurn) {
       checkForMatch();
       computerPlays();
@@ -31,7 +24,7 @@ const TicTacToe = (props) => {
   const GRID_LENGTH = allConstants.GRID_LENGTH;
 
   // handle the onClick event
-  const handleOnClick = (event) => {
+  const onClickHandler = (event) => {
     const { id } = event.target;
     console.log("code comes here", id);
     if (!isBoxFilled) {
@@ -179,7 +172,7 @@ const TicTacToe = (props) => {
                     value={box}
                     rowIndex={rowIndex}
                     colIndex={colIndex}
-                    handleOnClick={handleOnClick}
+                    onClickHandler={onClickHandler}
                     key={colIndex}
                   />
                 );

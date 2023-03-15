@@ -3,7 +3,7 @@ import { Constants } from "../Constants";
 
 const Box = (props) => {
   // extracting necessary fields from the props
-  const { value, rowIndex, colIndex, handleOnClick } = props;
+  const { value, rowIndex, colIndex, onClickHandler } = props;
   const boxIndex = rowIndex + colIndex + 1;
   const boxStyle = boxIndex % 2 === 0 ? "even-box box" : "odd-box box";
 
@@ -14,7 +14,7 @@ const Box = (props) => {
     <div
       id={`${rowIndex}-${colIndex}`}
       className={boxStyle}
-      onClick={handleOnClick}
+      onClick={onClickHandler}
     >
       {value == allConstants.USER_MOVE
         ? "X"

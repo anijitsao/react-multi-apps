@@ -22,7 +22,7 @@ const Box = props => {
     value,
     rowIndex,
     colIndex,
-    handleOnClick
+    onClickHandler
   } = props;
   const boxIndex = rowIndex + colIndex + 1;
   const boxStyle = boxIndex % 2 === 0 ? "even-box box" : "odd-box box";
@@ -32,7 +32,7 @@ const Box = props => {
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
     id: `${rowIndex}-${colIndex}`,
     className: boxStyle,
-    onClick: handleOnClick,
+    onClick: onClickHandler,
     children: value == allConstants.USER_MOVE ? "X" : value == allConstants.COMPUTER_MOVE ? "O" : ""
   });
 };
@@ -58,8 +58,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
 
-// import useEthConnector from "./EthConnector";
-
 
 
 // css
@@ -72,13 +70,7 @@ const TicTacToe = props => {
   const [userTurn, setUserTurn] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(true);
   const [isBoxFilled, setIsBoxFilled] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
   const [result, setResult] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("TBD");
-  //   const [isBoxLoaded, setBoxLoaded] = useState(false);
-
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
-    // if (!isBoxLoaded) {
-    //   setBoxLoaded(true);
-    // }
-
     if (Array.isArray(box) && !userTurn) {
       checkForMatch();
       computerPlays();
@@ -87,7 +79,7 @@ const TicTacToe = props => {
   const GRID_LENGTH = allConstants.GRID_LENGTH;
 
   // handle the onClick event
-  const handleOnClick = event => {
+  const onClickHandler = event => {
     const {
       id
     } = event.target;
@@ -225,7 +217,7 @@ const TicTacToe = props => {
             value: box,
             rowIndex: rowIndex,
             colIndex: colIndex,
-            handleOnClick: handleOnClick
+            onClickHandler: onClickHandler
           }, colIndex);
         })
       }, rowIndex);
