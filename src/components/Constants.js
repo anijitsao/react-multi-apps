@@ -7,15 +7,15 @@ export function Constants() {
       { to: "tictactoe", name: "Tic Tac Toe" },
     ],
 
-    USER_MOVE: "USR",
-    COMPUTER_MOVE: "COM",
-    EMPTY_CELL: "EMPTY",
+    USER_MOVE: 1,
+    COMPUTER_MOVE: 2,
+    EMPTY_CELL: 0,
     GRID_LENGTH: 3,
 
     BOX_INITIAL: [
-      ["EMPTY", "EMPTY", "EMPTY"],
-      ["EMPTY", "EMPTY", "EMPTY"],
-      ["EMPTY", "EMPTY", "EMPTY"],
+      [0, 0, 0],
+      [0, 0, 0],
+      [0, 0, 0],
     ],
   };
 }
