@@ -51,7 +51,7 @@ This is a *responsive web application* for viewing in both Mobile and Desktop.
 
 Clone the repository:
 ```bash
-$ git clone https://github.com/anijitsahu/react-app-simple-calculator.git
+$ git clone https://github.com/anijitsao/react-app-simple-calculator.git
 ```
 Navigate inside the directory and install all dependencies: 
 ```bash
