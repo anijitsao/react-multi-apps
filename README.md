@@ -13,7 +13,7 @@ For calculation of all the expressions [math.js](https://www.npmjs.com/package/m
 
 
 ## Features
- - Code is rewritten with latest version of [React JS](https://react.dev/learn) and [Node JS](https://nodejs.org/en/docs/).
+ - Code is rewritten with latest version of [React JS](https://react.dev/learn).
  - Latest features of JavaScript i.e. **ESNext** is used. 
  - React [code splitting](https://react.dev/reference/react/Suspense) with *Suspense* feature is added.
  - [React router](https://reactrouter.com/en/main/start/tutorial) is added to maintain it as **Single Page Application (SPA)**.
@@ -38,6 +38,12 @@ For calculation of all the expressions [math.js](https://www.npmjs.com/package/m
 
 - **Start** clock button is there to start the clock.
 - To stop the clock click **Stop** button.
+
+### TicTacToe
+
+- A simple Tictactoe application.
+- User moves are denoted by ```X``` while **Computer** moves are shown by ```O```.
+
 
 ## Installation
 
