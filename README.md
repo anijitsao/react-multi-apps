@@ -1,4 +1,4 @@
-# react-app-simple-calculator
+# react-multi-apps
 This is a collection of _multiple_ smaller applications using [React JS](https://react.dev/learn), a JavaScript library to make awesome UI by Facebook. 
 
 This application uses **component oriented UI** creation paradigm. All components are written in [JSX](https://react.dev/learn/writing-markup-with-jsx) and ES6 style and are combined to get a single build for production purpose using [Webpack 5](https://webpack.js.org/concepts/).
