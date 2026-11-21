@@ -49,11 +49,12 @@ For calculation of all the expressions [math.js](https://www.npmjs.com/package/m
 
 Clone the repository:
 ```bash
-$ git clone https://github.com/anijitsao/react-app-simple-calculator.git
+$ git clone https://github.com/anijitsao/react-multi-apps.git
 ```
 Navigate inside the directory and install all dependencies: 
+
 ```bash
-$ cd react-app-simple-calculator/dist
+$ cd react-multi-apps
 
 # install all dependencies
 $ npm install

@@ -13,15 +13,15 @@
   "type": "module",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/anijitsao/react-app-simple-calculator.git"
+    "url": "git+https://github.com/anijitsao/react-multi-apps.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/anijitsao/react-app-simple-calculator/issues"
+    "url": "https://github.com/anijitsao/react-multi-apps/issues"
   },
-  "homepage": "https://github.com/anijitsao/react-app-simple-calculator#readme",
+  "homepage": "https://github.com/anijitsao/react-multi-apps#readme",
   "devDependencies": {
     "@vitejs/plugin-react": "^6.3.0",
     "vite": "^8.3.8"
