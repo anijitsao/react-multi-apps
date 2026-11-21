@@ -1,5 +1,5 @@
 // npm dependencies
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router";
 import { lazy, Suspense } from "react";
 
 // components

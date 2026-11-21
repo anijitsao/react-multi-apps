@@ -1,16 +1,16 @@
 # react-multi-apps
 This is a collection of _multiple_ smaller applications using [React JS](https://react.dev/learn), a JavaScript library to make awesome UI by Facebook. 
 
-This application uses **component oriented UI** creation paradigm. All components are written in [JSX](https://react.dev/learn/writing-markup-with-jsx) and ES6 style and are combined to get a single build for production purpose using [Webpack 5](https://webpack.js.org/concepts/).
+This application uses **component oriented UI** creation paradigm. All components are written in [JSX](https://react.dev/learn/writing-markup-with-jsx) and ES6 style and are combined to get a single build for production purpose using [Vite](https://vite.dev/guide/).
 
-[Babel](https://babeljs.io/docs/) is used to _transpile_ all [JSX](https://react.dev/learn/writing-markup-with-jsx) code to vanilla JavaScript. For UI creation [HTML5](https://www.w3schools.com/html/html5_intro.asp) and [CSS3](https://www.w3schools.com/css/) are used.
+[Oxc Transformer](https://vite.dev/guide/features#jsx) is used to _transpile_ all [JSX](https://react.dev/learn/writing-markup-with-jsx) code to vanilla JavaScript. For UI creation [HTML5](https://www.w3schools.com/html/html5_intro.asp) and [CSS3](https://www.w3schools.com/css/) are used.
 
 This is a _responsive web application_ for viewing in both Mobile and Desktop.
 
 For calculation of all the expressions [math.js](https://www.npmjs.com/package/mathjs) is used.
 
 
-![Node JS](https://img.shields.io/badge/Node_JS-22.1.3-FFCD11?logo=nodedotjs&logoColor=FFCD11) ![npm](https://img.shields.io/badge/npm-10.1.3-00CA8E?logo=npm) ![React JS](https://img.shields.io/badge/React_JS-18.2.0-61DAFB?logo=react) ![React Router](https://img.shields.io/badge/React_Router-6.6.2-CA4245?logo=reactrouter) ![Babel](https://img.shields.io/badge/Babel-7.20.12-F9DC3E?logo=babel) ![Webpack](https://img.shields.io/badge/Webpack-5.75.0-8DD6F9?logo=webpack) ![HTML5](https://img.shields.io/badge/HTML-5.0.0-E34826?logo=html5) ![CSS3](https://img.shields.io/badge/CSS-3.0.0-663399?logo=css&logoColor=00B265) ![Google Fonts](https://img.shields.io/badge/Google_Fonts-2.138.1-02B785?logo=googlefonts&logoColor=02B785) ![Font Awesome](https://img.shields.io/badge/Font_Awesome-5.15.0-538DD7?logo=fontawesome)
+![Node JS](https://img.shields.io/badge/Node_JS-26.4.0-FFCD11?logo=nodedotjs&logoColor=FFCD11) ![npm](https://img.shields.io/badge/npm-12.2.3-00CA8E?logo=npm) ![React JS](https://img.shields.io/badge/React_JS-19.3.1-61DAFB?logo=react) ![React Router](https://img.shields.io/badge/React_Router-7.18.6-CA4245?logo=reactrouter) ![Vite](https://img.shields.io/badge/Vite-8.3.8-9135FF?logo=vite) ![HTML5](https://img.shields.io/badge/HTML-5.0.0-E34826?logo=html5) ![CSS3](https://img.shields.io/badge/CSS-3.0.0-663399?logo=css&logoColor=00B265) ![Google Fonts](https://img.shields.io/badge/Google_Fonts-2.138.1-02B785?logo=googlefonts&logoColor=02B785) ![Font Awesome](https://img.shields.io/badge/Font_Awesome-5.15.0-538DD7?logo=fontawesome)
 
 ## Features
  - Code is rewritten with latest version of [React JS](https://react.dev/learn).
@@ -49,11 +49,12 @@ For calculation of all the expressions [math.js](https://www.npmjs.com/package/m
 
 Clone the repository:
 ```bash
-$ git clone https://github.com/anijitsao/react-app-simple-calculator.git
+$ git clone https://github.com/anijitsao/react-multi-apps.git
 ```
 Navigate inside the directory and install all dependencies: 
+
 ```bash
-$ cd react-app-simple-calculator/dist
+$ cd react-multi-apps
 
 # install all dependencies
 $ npm install
