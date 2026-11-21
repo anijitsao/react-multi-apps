@@ -1,7 +1,7 @@
 {
-  "name": "react-app-simple-calculator",
-  "version": "3.0.0",
-  "description": "This is a simple calculator Application",
+  "name": "react-multi-apps",
+  "version": "4.0.0",
+  "description": "This is a collection of multiple React JS Applications",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
