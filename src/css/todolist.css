@@ -55,7 +55,7 @@
 .show-add-items {
   margin: 2%;
   display: grid;
-  grid-template-rows: 1fr 60vh;
+  grid-template-rows: 1fr 50vh;
   grid-template-columns: 1fr;
 }
 

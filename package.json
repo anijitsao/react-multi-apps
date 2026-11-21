@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "node_modules/.bin/vite build",
     "dev": "node_modules/.bin/vite",
-    "start": "node_modules/.bin/http-server ./dist/ -c-1 --cors -d false"
+    "preview": "node_modules/.bin/vite preview",
+    "start": "npm run build && npm run preview"
   },
   "type": "module",
   "repository": {
